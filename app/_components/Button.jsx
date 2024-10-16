@@ -2,7 +2,13 @@
 
 import React from "react";
 
-const Button = ({ children, type, onClick, className = "" }) => {
+const Button = ({
+  children,
+  type,
+  onClick,
+  disabled = false,
+  className = "",
+}) => {
   const classType =
     type === "primary"
       ? `p-2 transition-all rounded-md text-sm bg-red-500 text-white cursor-pointer hover:bg-red-600 ${className}`
@@ -17,7 +23,11 @@ const Button = ({ children, type, onClick, className = "" }) => {
       : `p-2 transition-all border bg-slate-200 rounded-md text-sm hover:bg-slate-300 ${className}`;
 
   return (
-    <button className={classType} onClick={(e) => onClick?.(e)}>
+    <button
+      disabled={disabled}
+      className={classType}
+      onClick={(e) => onClick?.(e)}
+    >
       {children}
     </button>
   );

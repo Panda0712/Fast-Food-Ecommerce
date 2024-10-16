@@ -19,10 +19,10 @@ const CheckoutForm = () => {
 
   const router = useRouter();
 
-  const totalPrice = cart.reduce(
-    (acc, cur) => acc + cur.totalPrice * cur.quantity,
-    0
-  );
+  const totalPrice =
+    cart.length > 0
+      ? cart.reduce((acc, cur) => acc + cur.totalPrice * cur.quantity, 0)
+      : 0;
 
   const handleChangePaymentMethod = (value) => {
     setPayment(value);
@@ -63,6 +63,13 @@ const CheckoutForm = () => {
   };
 
   const handlePayment = async () => {
+    if (cart.length === 0) {
+      toast.error(
+        "Giỏ hàng của bạn đang trống. Vui lòng thêm sản phẩm trước khi đặt hàng."
+      );
+      return;
+    }
+
     if (payment === "momo") {
       document.getElementById("qrModal").style.display = "flex";
     } else if (payment === "cash") {
@@ -76,35 +83,37 @@ const CheckoutForm = () => {
   };
 
   useEffect(() => {
-    if (cart.length > 1) {
-      const cartOrderData = [];
-      cart.map((cartItem) => {
-        const orderData = {
-          numFood: cartItem.quantity,
-          foodPrice: cartItem.regularPrice,
-          totalPrice: cartItem.totalPrice * cartItem.quantity,
-          status: "unpaid",
-          isPaid: false,
-          observations: formData.observations,
-          foodId: cartItem.id,
-          guestId: formData.id,
-        };
-        cartOrderData.push(orderData);
-        setOrderData(cartOrderData);
-      });
-    } else {
-      setOrderData([
-        {
-          numFood: cart[0].quantity,
-          foodPrice: cart[0].regularPrice,
-          totalPrice: cart[0].totalPrice * cart[0].quantity,
-          status: "unpaid",
-          isPaid: false,
-          observations: formData.observations,
-          foodId: cart[0].id,
-          guestId: formData.id,
-        },
-      ]);
+    if (cart.length > 0) {
+      if (cart.length > 1) {
+        const cartOrderData = [];
+        cart.map((cartItem) => {
+          const orderData = {
+            numFood: cartItem.quantity,
+            foodPrice: cartItem.regularPrice,
+            totalPrice: cartItem.totalPrice * cartItem.quantity,
+            status: "unpaid",
+            isPaid: false,
+            observations: formData.observations,
+            foodId: cartItem.id,
+            guestId: formData.id,
+          };
+          cartOrderData.push(orderData);
+          setOrderData(cartOrderData);
+        });
+      } else {
+        setOrderData([
+          {
+            numFood: cart[0].quantity,
+            foodPrice: cart[0].regularPrice,
+            totalPrice: cart[0].totalPrice * cart[0].quantity,
+            status: "unpaid",
+            isPaid: false,
+            observations: formData.observations,
+            foodId: cart[0].id,
+            guestId: formData.id,
+          },
+        ]);
+      }
     }
   }, [cart, formData]);
 
@@ -175,7 +184,12 @@ const CheckoutForm = () => {
         >
           Trở lại
         </Button>
-        <Button onClick={handlePayment} type="order" className="uppercase">
+        <Button
+          disabled={cart.length === 0}
+          onClick={handlePayment}
+          type="order"
+          className="uppercase"
+        >
           Đặt hàng
         </Button>
       </div>
