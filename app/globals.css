@@ -14,14 +14,91 @@
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+body::-webkit-scrollbar {
+  width: 6px;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+body::-webkit-scrollbar-track {
+  background: #f7f7f7;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #e31837;
+  border-radius: 9999px;
+}
+
+@font-face {
+  font-family: "Merge Black";
+  src: url("./_font/UM\ Merge\ Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "Merge Black", sans-serif;
+}
+
+@layer components {
+  .spinner {
+    margin: 3.2rem auto 1.6rem;
+    width: 60px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 8px solid #1b2631;
+    border-right-color: #b7c7d7;
+    animation: rotate 1s infinite linear;
+  }
+
+  .spinner-mini {
+    margin: 0;
+    width: 20px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 2px solid #b7c7d7;
+    border-right-color: transparent;
+    animation: rotate 1s infinite linear;
+  }
+
+  .arrow:hover {
+    opacity: 0.8;
+  }
+
+  .iconHover {
+    transition: all 0.3s ease;
+  }
+
+  .buttonShadow {
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+  }
+
+  .boxHover:hover .iconHover {
+    transform: scale(1.2);
+  }
+
+  .boxHover:hover .iconHoverSm {
+    transform: scale(1.05);
+  }
+
+  .boxHover:hover .iconHoverMd {
+    transform: scale(1.1);
+  }
+
+  .scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    background: #f7f7f7;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background-color: #e31837;
+    border-radius: 9999px;
+  }
+
+  @keyframes rotate {
+    to {
+      transform: rotate(1turn);
+    }
   }
 }
