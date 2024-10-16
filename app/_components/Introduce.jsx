@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Introduce = () => {
   return (
-    <div className="flex bg-opacity-25 justify-center flex-col items-center bg-[url('/background.avif')] bg-cover bg-center h-[500px] w-full text-center">
+    <div className="flex bg-opacity-25 justify-center flex-col items-center bg-[url('/background.png')] bg-cover bg-center h-[500px] w-full text-center">
       <h3 className="uppercase text-xl font-bold mb-2">
         Cửa hàng Fast Food xin chào
       </h3>
