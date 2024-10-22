@@ -2,6 +2,7 @@
 
 import { useCart } from "../_context/CartContext";
 import { useRouter } from "next/navigation";
+import { formatVND } from "../_lib/helper";
 
 import Image from "next/image";
 import Button from "./Button";
@@ -36,8 +37,15 @@ const FoodItem = ({ food }) => {
   return (
     <div
       onClick={() => handleClick(food.id)}
-      className="h-[300px] bg-white shadow-lg boxHover cursor-pointer overflow-hidden w-[300px] border rounded-lg"
+      className="h-[300px] relative bg-white shadow-lg boxHover cursor-pointer overflow-hidden w-[300px] border rounded-lg"
     >
+      {food.discount > 0 && (
+        <div className="absolute rounded-bl-md flex justify-center items-center right-0 w-20 h-7 bg-red-500">
+          <span className="text-white">
+            -{Math.floor((food.discount / food.regularPrice) * 100)}%
+          </span>
+        </div>
+      )}
       <Image
         width={250}
         height={0}
@@ -50,7 +58,18 @@ const FoodItem = ({ food }) => {
         <span className="text-sm">{description}</span>
       </div>
       <div className="px-3 py-3 flex items-center justify-between">
-        <span className="font-semibold">đ{food.regularPrice}</span>
+        <span className="font-semibold">
+          {food.discount > 0 ? (
+            <div className="flex items-center gap-1">
+              <span className="line-through text-sm">{food.regularPrice}</span>
+              <span className="font-bold text-lg text-red-600">
+                {formatVND(food.regularPrice - food.discount)}
+              </span>
+            </div>
+          ) : (
+            `${formatVND(food.regularPrice)}`
+          )}
+        </span>
         <Button type="third" onClick={handleCart}>
           Thêm vào giỏ
         </Button>
