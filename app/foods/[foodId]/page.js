@@ -25,11 +25,11 @@ const Page = async ({ params }) => {
       <HomeSlider foods={foods} />
       <SpecificFood food={food} />
 
-      <div className="border-2 border-t-slate-300 bg-[url('/bg-top.png')] bg-center bg-cover px-12 pt-16 pb-24">
+      <div className="border-2 border-t-slate-300 bg-[url('/bg-top.png')] bg-center bg-cover px-2 md:px-12 pt-16 pb-24">
         <h2 className="text-xl font-bold text-center">
           Các mặt hàng liên quan
         </h2>
-        <div className="mt-16 flex justify-center items-center flex-wrap gap-8">
+        <div className="mt-16 flex justify-center items-center flex-wrap gap-4 md:gap-8">
           {filterFoods.map((food) => (
             <FoodItem key={food.id} food={food} />
           ))}

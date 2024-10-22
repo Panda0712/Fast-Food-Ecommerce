@@ -14,15 +14,15 @@ const page = () => {
   return (
     <div className="bg-[#FCF5E5] pb-8 pt-12">
       <h2 className="text-3xl text-center  font-bold">Liên hệ với chúng tôi</h2>
-      <p className="mt-3 w-2/4 text-center mx-auto text-lg font-medium">
+      <p className="mt-3 w-3/4 md:w-2/4 text-center mx-auto text-lg font-medium">
         Nếu bạn có bất kì câu hỏi hay thắc mắc nào hoặc muốn liên hệ với dịch vụ
         của chúng tôi, đừng ngần ngại cung cấp thông tin để chúng tôi có thể hỗ
         trợ bạn một cách sớm nhất💕
       </p>
 
-      <div className="flex justify-center flex-wrap gap-12 mt-4 mb-8">
+      <div className="flex justify-start sm:justify-center items-center flex-wrap gap-12 mt-4 mb-8">
         <ContactForm />
-        <div className="py-8 flex flex-col gap-3">
+        <div className="py-8 px-8 flex flex-col gap-3">
           <div>
             <h3 className="text-lg font-bold">Chat với chúng tôi</h3>
             <p className="text-base font-medium">

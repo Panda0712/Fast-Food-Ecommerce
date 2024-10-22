@@ -90,7 +90,7 @@ const OrderHistory = ({ guestData }) => {
 
   return (
     <div>
-      <p className="mt-4 text-xl text-center">
+      <p className="mt-4 text-base md:text-xl text-center">
         Có {totalOrders} đơn hàng trong lịch sử mua hàng của bạn
       </p>
 
@@ -111,8 +111,8 @@ const OrderHistory = ({ guestData }) => {
               }`}
               key={order.id}
             >
-              <div className="flex justify-between">
-                <div className="flex gap-4">
+              <div className="flex justify-between flex-wrap gap-4 sm:flex-nowrap">
+                <div className="flex gap-4 flex-wrap min-[480px]:flex-nowrap">
                   <Image
                     src={
                       foodsData.find((food) => food.id === order.foodId)?.image
@@ -123,12 +123,16 @@ const OrderHistory = ({ guestData }) => {
                     className="w-[150px] h-[120px]"
                   />
                   <div>
-                    <h3 className="text-xl">
+                    <h3 className="text-lg sm:text-xl">
                       {foodsData.find((food) => food.id === order.foodId)?.name}
                     </h3>
-                    <p className="text-lg">Số lượng: {order.numFood}</p>
-                    <p className="text-lg">Mã đơn hàng: #{order.id}</p>
-                    <p className="text-lg">
+                    <p className="text-sm sm:text-lg">
+                      Số lượng: {order.numFood}
+                    </p>
+                    <p className="text-sm sm:text-lg">
+                      Mã đơn hàng: #{order.id}
+                    </p>
+                    <p className="text-sm sm:text-lg">
                       {order.isPaid ? "☑️ Đã thanh toán" : "✖️ Chưa thanh toán"}
                     </p>
                   </div>
@@ -139,10 +143,10 @@ const OrderHistory = ({ guestData }) => {
                 </p>
               </div>
 
-              <div className="flex justify-between items-center gap-8 xl:gap-16">
+              <div className="flex justify-between items-center flex-wrap md:flex-nowrap gap-8 xl:gap-16">
                 <div className="flex items-center gap-1">
-                  <span className="text-lg">✅</span>
-                  <span className="text-lg text-slate-500">
+                  <span className="text-sm sm:text-lg">✅</span>
+                  <span className="text-sm sm:text-lg text-slate-500">
                     Thời gian đặt hàng:{" "}
                     {parseDateTime(order.orderTime).formattedDate}
                   </span>
@@ -151,14 +155,14 @@ const OrderHistory = ({ guestData }) => {
                   <Button
                     onClick={() => router.push(`/foods/${order.foodId}`)}
                     type="order"
-                    className="uppercase"
+                    className="uppercase px-2 sm:px-8 text-[12px] font-medium sm:font-semibold sm:text-base"
                   >
                     Xem sản phẩm
                   </Button>
                   <Button
                     onClick={() => router.push("/foods")}
                     type="order"
-                    className="uppercase"
+                    className="uppercase px-2 sm:px-8 text-[12px] font-medium sm:font-semibold sm:text-base"
                   >
                     Mua lại
                   </Button>

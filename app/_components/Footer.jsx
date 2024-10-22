@@ -18,7 +18,7 @@ import React from "react";
 const Footer = () => {
   return (
     <div>
-      <div className="bg-gray-200 px-4 py-5 gap-4 flex flex-wrap justify-around">
+      <div className="bg-gray-200 px-12 md:px-4 py-5 gap-4 flex flex-col md:flex-row flex-wrap justify-around">
         <div className="max-w-[300px]">
           <Image src="/logo.png" alt="logo" width={120} height={50} />
           <p className="mt-10 d-block text-base font-semibold">
@@ -81,7 +81,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <div className="flex justify-between px-12 py-5 bg-slate-300">
+      <div className="flex justify-between flex-wrap gap-8 px-12 py-5 bg-slate-300">
         <p className="font-semibold text-base">
           Bản quyền ©2024 thuộc về Wukong Team
         </p>

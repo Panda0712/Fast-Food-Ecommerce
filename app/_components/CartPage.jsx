@@ -55,7 +55,7 @@ const CartPage = () => {
                   />
                   <h4 className="font-medium text-lg ml-2">{item.foodName}</h4>
                 </div>
-                <div className="flex items-center gap-16">
+                <div className="flex flex-wrap sm:flex-row sm:flex-nowrap items-center gap-4 sm:gap-16">
                   <div>
                     <p className="text-lg font-medium">Giá</p>
                     <p>{formatVND(item.regularPrice)}</p>

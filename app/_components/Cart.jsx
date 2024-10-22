@@ -29,7 +29,7 @@ const Cart = () => {
   return (
     <>
       {isVisible && (
-        <div className="scrollbar fixed flex flex-col gap-4 py-12 z-[1000] px-6 rounded-xl rounded-bl-none rounded-br-none bg-[#FAC437] min-w-[80%] max-h-[50%] overflow-auto right-10 bottom-0">
+        <div className="scrollbar fixed flex flex-col gap-4 py-12 z-[1000] px-6 rounded-xl rounded-bl-none rounded-br-none bg-[#FAC437] w-[70%] md:min-w-[80%] max-h-[50%] overflow-auto right-10 bottom-0">
           <div
             onClick={() => setIsVisible(false)}
             className="cursor-pointer absolute right-4 top-3"
@@ -43,7 +43,10 @@ const Cart = () => {
           ) : (
             <div className="flex flex-col gap-6 z-[1000]">
               {cart.map((food) => (
-                <div key={food.id} className="relative flex items-center gap-6">
+                <div
+                  key={food.id}
+                  className="relative flex flex-col md:flex-row items-center gap-6"
+                >
                   <Image
                     src={food.image}
                     alt="food image"
@@ -75,7 +78,7 @@ const Cart = () => {
                   </p>
                   <div
                     onClick={() => removeFromCart(food.id)}
-                    className="cursor-pointer absolute right-5 transition-all hover:opacity-60 flex items-center justify-center rounded-full h-[40px] w-[40px] bg-[#E31837]"
+                    className="cursor-pointer absolute right-1 md:right-5 transition-all hover:opacity-60 flex items-center justify-center rounded-full h-[40px] w-[40px] bg-[#E31837]"
                   >
                     <FontAwesomeIcon
                       icon={faTrash}
@@ -84,7 +87,7 @@ const Cart = () => {
                   </div>
                 </div>
               ))}
-              <div className="flex w-full items-center justify-between">
+              <div className="flex w-full md:flex-row flex-col items-center justify-between">
                 <p className="font-bold text-xl">Tổng Cộng :</p>
                 <p className="font-bold text-xl text-[#E31837]">
                   {formatVND(totalPrice)}

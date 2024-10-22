@@ -32,13 +32,13 @@ const Foods = () => {
   }
 
   return (
-    <div className="bg-[url('/bg-bottom-main1.png')] bg-center bg-cover pt-16 pb-24 px-4">
+    <div className="bg-[url('/bg-bottom-main1.png')] bg-center bg-cover pt-16 pb-24 px-2 md:px-4">
       <div className="flex items-center justify-center gap-4">
         <Image src="/icon3.png" alt="icon" width={30} height={30} />
         <h3 className="text-center text-2xl font-bold">Danh sách món ăn</h3>
         <Image src="/icon4.png" alt="icon" width={30} height={30} />
       </div>
-      <div className="mt-16 flex justify-center items-center flex-wrap gap-8">
+      <div className="mt-16 flex justify-center items-center flex-wrap gap-4 md:gap-8">
         {filterFoods.map((food) => (
           <FoodItem key={food.id} food={food} />
         ))}

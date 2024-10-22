@@ -33,13 +33,13 @@ const ContactForm = () => {
       onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col gap-4 px-8 py-8"
     >
-      <div className="flex items-center gap-3">
+      <div className="flex flex-col sm:flex-row items-center gap-3">
         <div className="flex flex-col gap-2">
           <label className="text-base font-semibold" for="firstName">
             Họ
           </label>
           <input
-            className="px-2 py-2 text-base rounded-lg border outline-none transition-all border-slate-300"
+            className="px-2 py-2 min-w-[300px] sm:min-w-[unset] text-base rounded-lg border outline-none transition-all border-slate-300"
             type="text"
             name="firstName"
             placeholder="Nhập họ"
@@ -58,7 +58,7 @@ const ContactForm = () => {
             Tên
           </label>
           <input
-            className="px-2 py-2 text-base rounded-lg border outline-none transition-all border-slate-300"
+            className="px-2 py-2 min-w-[300px] sm:min-w-[unset] text-base rounded-lg border outline-none transition-all border-slate-300"
             type="text"
             name="lastName"
             placeholder="Nhập tên"

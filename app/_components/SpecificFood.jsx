@@ -34,7 +34,7 @@ const SpecificFood = ({ food }) => {
           </div>
         )}
         <Image
-          className="object-cover rounded-sm max-w-[500px] max-h-[500px] h-auto"
+          className="object-cover rounded-sm max-w-[300px] sm:max-w-[500px] max-h-[500px] h-auto"
           src={food.image}
           width={450}
           height={0}
@@ -47,13 +47,14 @@ const SpecificFood = ({ food }) => {
         <span className="font-semibold">
           {food.discount > 0 ? (
             <div className="flex items-center gap-1">
+              <span>Giá:</span>
               <span className="line-through text-sm">{food.regularPrice}</span>
               <span className="font-bold text-xl text-red-600">
                 {formatVND(food.regularPrice - food.discount)}
               </span>
             </div>
           ) : (
-            `${formatVND(food.regularPrice)}`
+            <p>Giá: {formatVND(food.regularPrice)}</p>
           )}
         </span>
         <Button type="fourth" className="mt-6">

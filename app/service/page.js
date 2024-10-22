@@ -6,7 +6,7 @@ import Link from "next/link";
 const page = () => {
   return (
     <div className="flex flex-col">
-      <div className="flex bg-[#f2f2f2] px-4 py-12 items-center justify-center gap-12">
+      <div className="flex md:flex-row flex-col bg-[#f2f2f2] px-4 py-12 items-center justify-center gap-12">
         <Image src="/thumb1.png" alt="thumb" width={250} height={250} />
         <div>
           <h2 className="text-[28px] text-[#A9B91A] uppercase font-extrabold mb-3">
@@ -23,7 +23,7 @@ const page = () => {
           </Link>
         </div>
       </div>
-      <div className="flex px-4 py-12 items-center justify-center gap-12">
+      <div className="flex md:flex-row flex-col px-4 py-12 items-center justify-center gap-12">
         <Image src="/thumb2.png" alt="thumb" width={250} height={250} />
         <div>
           <h2 className="text-[28px] text-[#A9B91A] uppercase font-extrabold mb-3">
@@ -40,7 +40,7 @@ const page = () => {
           </Link>
         </div>
       </div>
-      <div className="flex bg-[#f2f2f2] px-4 py-12 items-center justify-center gap-12">
+      <div className="flex md:flex-row flex-col bg-[#f2f2f2] px-4 py-12 items-center justify-center gap-12">
         <Image src="/thumb3.png" alt="thumb" width={250} height={250} />
         <div>
           <h2 className="text-[28px] text-[#5DC6D1] uppercase font-extrabold mb-3">

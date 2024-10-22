@@ -37,7 +37,7 @@ const FoodItem = ({ food }) => {
   return (
     <div
       onClick={() => handleClick(food.id)}
-      className="h-[300px] relative bg-white shadow-lg boxHover cursor-pointer w-[300px] border rounded-lg overflow-hidden"
+      className="md:h-[300px] h-[350px] flex flex-col justify-between md:flex-none relative bg-white shadow-lg boxHover cursor-pointer w-[160px] md:w-[300px] border rounded-lg overflow-hidden"
     >
       {food.discount > 0 && (
         <div className="z-10 absolute rounded-bl-md rounded-tr-md flex justify-center items-center right-0 w-20 h-7 bg-red-500">
@@ -52,14 +52,14 @@ const FoodItem = ({ food }) => {
           height={0}
           src={food.image}
           alt={`${food.name} image`}
-          className="w-full iconHoverSm transition-all h-[150px] object-cover rounded-tr-lg rounded-tl-lg"
+          className="w-full iconHoverSm transition-all h-[120px] md:h-[150px] object-cover rounded-tr-lg rounded-tl-lg"
         />
       </div>
       <div className="px-3 py-4">
         <p className="text-md font-semibold">{food.name}</p>
-        <span className="text-sm">{description}</span>
+        <span className="text-sm h-16 md:h-none">{description}</span>
       </div>
-      <div className="px-3 py-3 flex items-center justify-between">
+      <div className="px-3 py-3 flex md:flex-row flex-col md:gap-2 gap-4 items-center justify-between">
         <span className="font-semibold">
           {food.discount > 0 ? (
             <div className="flex items-center gap-1">

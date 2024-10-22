@@ -59,16 +59,16 @@ const Header = () => {
       {isSignedIn ? (
         <div className="flex items-center gap-8">
           <Link href="/history">
-            <div className="cursor-pointer flex flex-col relative hover:opacity-70 transition-all">
+            <div className="cursor-pointer flex flex-col justify-center relative hover:opacity-70 transition-all">
               <FontAwesomeIcon
                 icon={faClockRotateLeft}
                 style={{ fontSize: 24, color: "black" }}
               />
-              <span className="text-sm">Lịch sử mua hàng</span>
+              <span className="text-sm text-center">Lịch sử mua hàng</span>
             </div>
           </Link>
           <Link href="/cart">
-            <div className="cursor-pointer flex flex-col relative hover:opacity-70 transition-all">
+            <div className="cursor-pointer flex justify-center flex-col relative hover:opacity-70 transition-all">
               <FontAwesomeIcon
                 icon={faShoppingCart}
                 style={{ fontSize: 24, color: "black" }}
@@ -76,7 +76,7 @@ const Header = () => {
               <div className="absolute px-[6px] top-[-10px] rounded-lg right-0 flex z-100 justify-center items-center bg-gray-300 z-10">
                 <span className="text-xs">{cart.length}</span>
               </div>
-              <span className="text-sm">Giỏ hàng</span>
+              <span className="text-sm text-center">Giỏ hàng</span>
             </div>
           </Link>
           <div className="flex items-center justify-center gap-3 p-3 bg-slate-300 rounded-lg">

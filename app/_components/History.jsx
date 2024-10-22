@@ -30,13 +30,13 @@ const History = () => {
 
   return (
     <div className="pt-16 pb-24 px-12">
-      <h2 className="text-2xl font-bold text-center mt-4">
+      <h2 className="text-lg md:text-2xl font-bold text-center mt-4">
         ⌛ Lịch sử mua hàng của bạn ⌛
       </h2>
       {guestData ? (
         <OrderHistory guestData={guestData} />
       ) : (
-        <p className="text-lg text-center">
+        <p className="text-sm md:text-lg text-center">
           Bạn chưa có đơn hàng nào! Hãy mua hàng để theo dõi mục này nhé 😍
         </p>
       )}
