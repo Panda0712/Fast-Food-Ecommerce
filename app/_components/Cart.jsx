@@ -29,7 +29,7 @@ const Cart = () => {
   return (
     <>
       {isVisible && (
-        <div className="scrollbar fixed flex flex-col gap-4 py-12 z-100 px-6 rounded-xl rounded-bl-none rounded-br-none bg-[#FAC437] min-w-[80%] max-h-[50%] overflow-auto right-10 bottom-0">
+        <div className="scrollbar fixed flex flex-col gap-4 py-12 z-[1000] px-6 rounded-xl rounded-bl-none rounded-br-none bg-[#FAC437] min-w-[80%] max-h-[50%] overflow-auto right-10 bottom-0">
           <div
             onClick={() => setIsVisible(false)}
             className="cursor-pointer absolute right-4 top-3"
@@ -41,7 +41,7 @@ const Cart = () => {
               Bạn không có sản phẩm nào trong giỏ hàng của bạn
             </span>
           ) : (
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6 z-[1000]">
               {cart.map((food) => (
                 <div key={food.id} className="relative flex items-center gap-6">
                   <Image

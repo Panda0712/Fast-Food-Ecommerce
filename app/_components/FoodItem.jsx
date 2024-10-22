@@ -37,22 +37,24 @@ const FoodItem = ({ food }) => {
   return (
     <div
       onClick={() => handleClick(food.id)}
-      className="h-[300px] relative bg-white shadow-lg boxHover cursor-pointer overflow-hidden w-[300px] border rounded-lg"
+      className="h-[300px] relative bg-white shadow-lg boxHover cursor-pointer w-[300px] border rounded-lg overflow-hidden"
     >
       {food.discount > 0 && (
-        <div className="absolute rounded-bl-md flex justify-center items-center right-0 w-20 h-7 bg-red-500">
+        <div className="z-10 absolute rounded-bl-md rounded-tr-md flex justify-center items-center right-0 w-20 h-7 bg-red-500">
           <span className="text-white">
             -{Math.floor((food.discount / food.regularPrice) * 100)}%
           </span>
         </div>
       )}
-      <Image
-        width={250}
-        height={0}
-        src={food.image}
-        alt={`${food.name} image`}
-        className="w-full iconHoverSm transition-all h-[150px] object-cover rounded-tr-lg rounded-tl-lg"
-      />
+      <div className="overflow-hidden">
+        <Image
+          width={250}
+          height={0}
+          src={food.image}
+          alt={`${food.name} image`}
+          className="w-full iconHoverSm transition-all h-[150px] object-cover rounded-tr-lg rounded-tl-lg"
+        />
+      </div>
       <div className="px-3 py-4">
         <p className="text-md font-semibold">{food.name}</p>
         <span className="text-sm">{description}</span>
