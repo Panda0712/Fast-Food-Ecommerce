@@ -102,6 +102,38 @@ export const getSpecificOrders = async (guestId) => {
   return { orderData, error };
 };
 
+export const getOrdersCount = async (guestId) => {
+  let { count, error } = await supabase
+    .from("orders")
+    .select("*", { count: "exact" })
+    .eq("guestId", guestId);
+
+  if (error) {
+    toast.error(error.message);
+    throw new Error("Lấy số lượng đơn hàng thất bại! Vui lòng thử lại sau!");
+  }
+
+  return { count, error };
+};
+
+export const getPaginationOrders = async (guestId, start, end) => {
+  let { data: paginationOrders, error } = await supabase
+    .from("orders")
+    .select("*")
+    .eq("guestId", guestId)
+    .order("created_at", { ascending: false })
+    .range(start, end);
+
+  if (error) {
+    toast.error(error.message);
+    throw new Error(
+      "Lấy dữ liệu phân trang đơn đặt hàng thất bại! Vui lòng thử lại sau!"
+    );
+  }
+
+  return { paginationOrders, error };
+};
+
 export const getSpecificFoods = async (foodId) => {
   let { data: foods, error } = await supabase
     .from("foods")
