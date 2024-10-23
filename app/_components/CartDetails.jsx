@@ -19,7 +19,7 @@ const CartDetails = () => {
   if (!cart.length) router.push("/");
 
   return (
-    <div className="py-4 px-12 rounded-md bg-[#f5f1e6]">
+    <div className="py-4 px-8 sm:px-12 rounded-md bg-[#f5f1e6]">
       <h2 className="font-bold text-xl uppercase mb-5">Chi tiết đơn hàng</h2>
       <div className="flex flex-col gap-4 py-4">
         {cart.map((item) => (
@@ -30,7 +30,7 @@ const CartDetails = () => {
             <Image src={item.image} alt="foodImage" width={100} height={100} />
             <div>
               <p className="uppercase font-medium">{item.foodName}</p>
-              <div className="flex gap-16">
+              <div className="flex flex-wrap sm:flex-nowrap gap-4 sm:gap-16">
                 <p className="font-[500]">x {item.quantity}</p>
                 <p className="font-medium">
                   + {formatVND(item.totalPrice * item.quantity)}

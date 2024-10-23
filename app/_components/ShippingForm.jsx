@@ -72,7 +72,7 @@ const ShippingForm = () => {
       <div className="flex flex-col gap-4 mt-8">
         <div className="flex-1">
           <input
-            className="min-w-[400px] px-2 py-2 text-base rounded-lg border outline-none transition-all border-slate-300"
+            className="min-w-[300px] sm:min-w-[400px] px-2 py-2 text-base rounded-lg border outline-none transition-all border-slate-300"
             type="text"
             name="firstName"
             defaultValue={
@@ -93,7 +93,7 @@ const ShippingForm = () => {
         </div>
         <div>
           <input
-            className="min-w-[400px] px-2 py-2 text-base rounded-lg border outline-none transition-all border-slate-300"
+            className="min-w-[300px] sm:min-w-[400px] px-2 py-2 text-base rounded-lg border outline-none transition-all border-slate-300"
             type="text"
             name="lastName"
             placeholder="Nhập tên"
@@ -112,7 +112,7 @@ const ShippingForm = () => {
         </div>
         <div>
           <input
-            className="min-w-[400px] px-2 py-2 text-base rounded-lg border outline-none transition-all border-slate-300"
+            className="min-w-[300px] sm:min-w-[400px] px-2 py-2 text-base rounded-lg border outline-none transition-all border-slate-300"
             type="text"
             name="phone"
             placeholder="Số điện thoại"
@@ -135,7 +135,7 @@ const ShippingForm = () => {
         </div>
         <div>
           <input
-            className="min-w-[400px] px-2 py-2 text-base rounded-lg border outline-none transition-all border-slate-300"
+            className="min-w-[300px] sm:min-w-[400px] px-2 py-2 text-base rounded-lg border outline-none transition-all border-slate-300"
             type="email"
             name="email"
             placeholder="Email"
@@ -154,7 +154,7 @@ const ShippingForm = () => {
         </div>
         <div>
           <input
-            className="min-w-[400px] px-2 py-2 text-base rounded-lg border outline-none transition-all border-slate-300"
+            className="min-w-[300px] sm:min-w-[400px] px-2 py-2 text-base rounded-lg border outline-none transition-all border-slate-300"
             type="text"
             name="address"
             placeholder="Địa chỉ"
@@ -171,7 +171,7 @@ const ShippingForm = () => {
         </div>
         <div>
           <textarea
-            className="min-w-[400px] px-2 py-2 text-base min-h-[100px] rounded-lg border outline-none transition-all border-slate-300"
+            className="min-w-[300px] sm:min-w-[400px] px-2 py-2 text-base min-h-[100px] rounded-lg border outline-none transition-all border-slate-300"
             type="text"
             name="observations"
             placeholder="Ghi chú đơn hàng"

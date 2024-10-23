@@ -17,7 +17,7 @@ const CartDetails = () => {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="pt-4 pb-6 px-12 rounded-md bg-[#f5f1e6]">
+      <div className="pt-4 pb-6 px-8 sm:px-12 rounded-md bg-[#f5f1e6]">
         <h2 className="font-bold text-xl uppercase mb-5">Chi tiết đơn hàng</h2>
         <div className="flex flex-col gap-4">
           {cart.map((item) => (
@@ -33,7 +33,7 @@ const CartDetails = () => {
               />
               <div>
                 <p className="uppercase font-medium">{item.foodName}</p>
-                <div className="flex gap-16">
+                <div className="flex flex-wrap sm:flex-nowrap gap-8 sm:gap-16">
                   <p className="font-[500]">x {item.quantity}</p>
                   <p className="font-medium">
                     + {formatVND(item.totalPrice * item.quantity)}
@@ -51,7 +51,7 @@ const CartDetails = () => {
         </div>
       </div>
 
-      <div className="py-4 px-12 rounded-md bg-[#f5f1e6]">
+      <div className="py-4 px-8 sm:px-12 rounded-md bg-[#f5f1e6]">
         <h2 className="font-bold text-xl uppercase mb-4">
           Giao hàng đến địa chỉ
         </h2>
@@ -61,7 +61,7 @@ const CartDetails = () => {
           <p>Email: {formData.email}</p>
         </div>
       </div>
-      <div className="py-4 px-12 rounded-md bg-[#f5f1e6]">
+      <div className="py-4 px-8 sm:px-12 rounded-md bg-[#f5f1e6]">
         <h2 className="font-bold text-xl uppercase mb-4">
           Phương thức giao hàng
         </h2>

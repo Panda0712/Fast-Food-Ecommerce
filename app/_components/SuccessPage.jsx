@@ -38,14 +38,14 @@ const SuccessPage = () => {
   }
 
   return (
-    <div className="flex flex-col items-center gap-4 py-16">
-      <h2 className="text-center text-3xl">
+    <div className="flex flex-col items-center gap-4 py-16 px-4 sm:px-0">
+      <h2 className="text-center text-2xl sm:text-3xl">
         🎉 Đơn hàng đã được đặt thành công 🎉
       </h2>
-      <p className="text-center text-xl">
+      <p className="text-center text-lg sm:text-xl">
         Chân thành cảm ơn quý khách đã sử dụng dịch vụ của chúng tôi.
       </p>
-      <p className="text-center text-xl">
+      <p className="text-center text-lg sm:text-xl">
         ⌚ Đơn hàng sẽ được giao một cách sớm nhất. Vui lòng chú ý điện thoại!
         ⌚
       </p>

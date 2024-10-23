@@ -122,7 +122,7 @@ const CheckoutForm = () => {
   return (
     <div className="flex flex-col gap-4">
       <h2 className="font-bold text-xl">Phương thức thanh toán</h2>
-      <div className="flex flex-col gap-4 min-w-[400px]">
+      <div className="flex flex-col gap-4 min-w-[300px] sm:min-w-[400px]">
         <div className="flex items-center gap-2 text-lg border border-r-0 border-t-0 border-l-0 border-b-slate-400 py-2">
           <input
             type="radio"
