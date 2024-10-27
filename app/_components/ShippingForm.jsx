@@ -54,11 +54,12 @@ const ShippingForm = () => {
         setGuestData(data);
 
         if (data) {
-          setValue(
-            "firstName",
-            data.fullName.split(" ").slice(0, -1).join(" ")
-          );
-          setValue("lastName", data.fullName.split(" ").slice(-1).join(" "));
+          const name = data.fullName.split(" ");
+          const len = name.length;
+          const firstName = len > 1 ? name.slice(0, -1).join(" ") : name[0];
+          const lastName = len > 1 ? name.slice(-1).join(" ") : name[0];
+          setValue("firstName", firstName);
+          setValue("lastName", lastName);
           setValue("phone", data.phone || "");
           setValue("email", data.email || "");
           setValue("address", data.address || "");
@@ -77,7 +78,7 @@ const ShippingForm = () => {
             name="firstName"
             defaultValue={
               guestData
-                ? guestData.fullName.split(" ").slice(0, -1).join(" ")
+                ? guestData.fullName?.split(" ").slice(0, -1).join(" ")
                 : ""
             }
             placeholder="Nhập họ"
@@ -98,7 +99,7 @@ const ShippingForm = () => {
             name="lastName"
             placeholder="Nhập tên"
             defaultValue={
-              guestData ? guestData.fullName.split(" ").slice(-1) : ""
+              guestData ? guestData.fullName?.split(" ").slice(-1) : ""
             }
             {...register("lastName", {
               required: "Hãy nhập tên của bạn!",
