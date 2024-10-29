@@ -27,7 +27,7 @@ const Foods = () => {
     filterFoods = [...foods];
   } else {
     filterFoods = foods.filter(
-      (food) => food.category.toLowerCase() === category
+      (food) => food.category.toLowerCase() === category.toLowerCase()
     );
   }
 

@@ -1,16 +1,3 @@
-import {
-  faBowlRice,
-  faBurger,
-  faDrumstickBite,
-  faIceCream,
-  faPizzaSlice,
-  faSpaghettiMonsterFlying,
-  faTag,
-  faTags,
-  faBowlFood,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 const CategoriesTag = [
   "all",
   "hamburger",
@@ -24,60 +11,33 @@ const CategoriesTag = [
 ];
 
 const CategoriesIcon = [
-  <FontAwesomeIcon
-    className="iconHover"
-    key="all" // Add a unique key for each icon
-    icon={faBowlFood}
-    style={{ fontSize: 24, color: "orange" }}
-  />,
-  <FontAwesomeIcon
-    className="iconHover"
-    key="burger" // Add a unique key for each icon
-    icon={faBurger}
-    style={{ fontSize: 24, color: "orange" }}
-  />,
-  <FontAwesomeIcon
-    className="iconHover"
-    key="pizza"
-    icon={faPizzaSlice}
-    style={{ fontSize: 24, color: "orange" }}
-  />,
-  <FontAwesomeIcon
-    className="iconHover"
-    key="spaghetti"
-    icon={faSpaghettiMonsterFlying}
-    style={{ fontSize: 24, color: "orange" }}
-  />,
-  <FontAwesomeIcon
-    className="iconHover"
-    key="drumstick"
-    icon={faDrumstickBite}
-    style={{ fontSize: 24, color: "orange" }}
-  />,
-  <FontAwesomeIcon
-    className="iconHover"
-    key="rice"
-    icon={faBowlRice}
-    style={{ fontSize: 24, color: "orange" }}
-  />,
-  <FontAwesomeIcon
-    className="iconHover"
-    key="icecream"
-    icon={faIceCream}
-    style={{ fontSize: 24, color: "orange" }}
-  />,
-  <FontAwesomeIcon
-    className="iconHover"
-    key="tag"
-    icon={faTag}
-    style={{ fontSize: 24, color: "orange" }}
-  />,
-  <FontAwesomeIcon
-    className="iconHover"
-    key="tags"
-    icon={faTags}
-    style={{ fontSize: 24, color: "orange" }}
-  />,
+  <span className="iconHover" style={{ fontSize: 30 }} key="all">
+    🍽️
+  </span>,
+  <span className="iconHover" style={{ fontSize: 30 }} key="hamburger">
+    🍔
+  </span>,
+  <span className="iconHover" style={{ fontSize: 30 }} key="pizza">
+    🍕
+  </span>,
+  <span className="iconHover" style={{ fontSize: 30 }} key="noodles">
+    🍝
+  </span>,
+  <span className="iconHover" style={{ fontSize: 30 }} key="chicken">
+    🍗
+  </span>,
+  <span className="iconHover" style={{ fontSize: 30 }} key="rice">
+    🍚
+  </span>,
+  <span className="iconHover" style={{ fontSize: 30 }} key="drink">
+    🍨
+  </span>,
+  <span className="iconHover" style={{ fontSize: 30 }} key="combo">
+    🥣
+  </span>,
+  <span className="iconHover" style={{ fontSize: 30 }} key="multiCombo">
+    🫕
+  </span>,
 ];
 
 const CategoriesInfo = { CategoriesIcon, CategoriesTag };
