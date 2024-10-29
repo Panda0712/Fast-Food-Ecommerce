@@ -34,7 +34,7 @@ const SpecificFood = ({ food }) => {
           </div>
         )}
         <Image
-          className="object-cover rounded-sm max-w-[300px] sm:max-w-[500px] max-h-[500px] h-auto"
+          className="object-cover rounded-sm max-w-[300px] sm:max-w-[500px] max-h-[300px] h-auto"
           src={food.image}
           width={450}
           height={0}
@@ -43,7 +43,9 @@ const SpecificFood = ({ food }) => {
       </div>
       <div>
         <h3 className="text-xl mb-2 font-bold">{food.name}</h3>
-        <p className="text-base font-semibold mb-4">{food.description}</p>
+        <p className="text-base font-semibold mb-4 max-w-[400px]">
+          {food.description}
+        </p>
         <span className="font-semibold">
           {food.discount > 0 ? (
             <div className="flex items-center gap-1">
