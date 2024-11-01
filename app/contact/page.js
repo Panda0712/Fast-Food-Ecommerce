@@ -1,9 +1,4 @@
-import {
-  faFacebook,
-  faInstagram,
-  faThreads,
-  faTwitter,
-} from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faMap, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -53,32 +48,6 @@ const page = () => {
                 />
                 <span className="text-base font-semibold underline underline-offset-2">
                   Chat qua Instagram
-                </span>
-              </Link>
-              <Link
-                className="flex items-center gap-2 transition-all hover:text-slate-500"
-                href="https://x.com/?lang=vi"
-                target="_blank"
-              >
-                <FontAwesomeIcon
-                  icon={faTwitter}
-                  style={{ fontSize: 24, color: "#007FFF" }}
-                />
-                <span className="text-base font-semibold underline underline-offset-2">
-                  Chat qua Twitter
-                </span>
-              </Link>
-              <Link
-                className="flex items-center gap-2 transition-all hover:text-slate-500"
-                href="https://www.threads.net/@sadoc_ean"
-                target="_blank"
-              >
-                <FontAwesomeIcon
-                  icon={faThreads}
-                  style={{ fontSize: 24, color: "#007FFF" }}
-                />
-                <span className="text-base font-semibold underline underline-offset-2">
-                  Chat qua Threads
                 </span>
               </Link>
               <Link
