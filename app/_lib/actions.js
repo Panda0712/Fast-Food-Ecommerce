@@ -2,7 +2,10 @@ import toast from "react-hot-toast";
 import supabase from "./supabase";
 
 export const getFoods = async () => {
-  let { data: foods, error } = await supabase.from("foods").select("*");
+  let { data: foods, error } = await supabase
+    .from("foods")
+    .select("*")
+    .order("created_at", { ascending: false });
 
   if (error) {
     throw new Error("Lỗi tải dữ liệu món ăn! Vui lòng thử lại sau!");
@@ -26,7 +29,10 @@ export const getFood = async (id) => {
 };
 
 export const getCategories = async () => {
-  let { data: categories, error } = await supabase.from("category").select("*");
+  let { data: categories, error } = await supabase
+    .from("category")
+    .select("*")
+    .order("created_at", { ascending: false });
 
   if (error) {
     throw new Error("Lỗi tải dữ liệu các loại mặt hàng! Vui lòng thử lại sau!");
@@ -41,7 +47,8 @@ export const getRelatedFoods = async (category, id) => {
     .select("*")
     .eq("category", category)
     .neq("id", id)
-    .limit(8);
+    .limit(8)
+    .order("created_at", { ascending: false });
 
   if (error) {
     throw new Error(
@@ -92,7 +99,8 @@ export const getSpecificOrders = async (guestId) => {
   let { data: orderData, error } = await supabase
     .from("orders")
     .select("*")
-    .eq("guestId", guestId);
+    .eq("guestId", guestId)
+    .order("created_at", { ascending: false });
 
   if (error) {
     toast.error(error.message);
@@ -189,18 +197,3 @@ export const insertUser = async (newData) => {
 
   return { userData, error };
 };
-
-// export const getSpecificFoods = async (category) => {
-//   const { data: filterFoods, error } = await supabase
-//     .from("foods")
-//     .select("*")
-//     .eq("category", category);
-
-//   if (error) {
-//     throw new Error(
-//       "Lỗi tải dữ liệu lọc món ăn tương ứng! Vui lòng thử lại sau!"
-//     );
-//   }
-
-//   return { filterFoods, error };
-// };
