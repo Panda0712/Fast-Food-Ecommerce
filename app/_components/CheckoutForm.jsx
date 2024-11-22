@@ -62,6 +62,41 @@ const CheckoutForm = () => {
     resetCart();
   };
 
+  const handleZaloPayPayment = async () => {
+    if (cart.length === 0) {
+      toast.error("Giỏ hàng trống");
+      return;
+    }
+
+    try {
+      const orderDataForPayment = {
+        ...formData,
+        totalPrice: totalPrice,
+        status: "processing",
+        products: cart.map((item) => ({
+          id: item.id,
+          name: item.name,
+          quantity: item.quantity,
+          price: item.regularPrice,
+        })),
+      };
+
+      const response = await axios.post("/api/zalopay", {
+        amount: totalPrice,
+        orderInfo: orderDataForPayment,
+      });
+
+      if (response.data.order_url) {
+        window.location.href = response.data.order_url;
+      } else {
+        toast.error("Không thể tạo đường dẫn thanh toán");
+      }
+    } catch (error) {
+      console.error("ZaloPay Payment Error:", error);
+      toast.error("Thanh toán ZaloPay thất bại");
+    }
+  };
+
   const handlePayment = async () => {
     if (cart.length === 0) {
       toast.error(
@@ -77,6 +112,8 @@ const CheckoutForm = () => {
       router.push("/success");
     } else if (payment === "bank") {
       document.getElementById("qrModal").style.display = "flex";
+    } else if (payment === "zalopay") {
+      await handleZaloPayPayment();
     } else {
       toast.error("Vui lòng chọn phương thức thanh toán để tiếp tục");
     }
@@ -135,6 +172,20 @@ const CheckoutForm = () => {
             Tiền mặt
           </label>
         </div>
+
+        <div className="flex items-center gap-2 text-lg border border-r-0 border-t-0 border-l-0 border-b-slate-400 py-2">
+          <input
+            type="radio"
+            name="zalopay"
+            className="w-[15px] h-[15px] checked:bg-red-500"
+            checked={payment === "zalopay"}
+            onChange={() => handleChangePaymentMethod("zalopay")}
+          />
+          <label name="zalopay" htmlFor="zalopay">
+            Ví ZaloPay
+          </label>
+        </div>
+
         <div className="flex items-center gap-2 text-lg border border-r-0 border-t-0 border-l-0 border-b-slate-400 py-2">
           <input
             type="radio"
