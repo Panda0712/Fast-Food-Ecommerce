@@ -1,5 +1,5 @@
-import toast from "react-hot-toast";
 import supabase from "./supabase";
+import toast from "react-hot-toast";
 
 export const getFoods = async () => {
   let { data: foods, error } = await supabase

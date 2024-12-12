@@ -1,9 +1,3 @@
-import {
-  insertMultipleOrders,
-  insertOrder,
-  insertUser,
-} from "../../app/_lib/actions";
-
 const express = require("express");
 const app = express();
 
@@ -11,6 +5,12 @@ const cors = require("cors");
 const axios = require("axios").default;
 const CryptoJS = require("crypto-js");
 const moment = require("moment");
+
+// const {
+//   insertMultipleOrders,
+//   insertOrder,
+//   insertUser,
+// } = require("../../app/_lib/actions");
 
 app.use(cors());
 app.use(express.json());
@@ -47,7 +47,7 @@ app.post("/payment", async (req, res) => {
     description: `Lazada - Payment for the order #${transID}`,
     bank_code: "",
     callback_url:
-      "https://fcd2-2402-800-63a8-dd41-403d-6000-2875-2071.ngrok-free.app/callback",
+      "https://d130-2402-800-63a8-dd41-403d-6000-2875-2071.ngrok-free.app/callback",
   };
 
   // appid|app_trans_id|appuser|amount|apptime|embeddata|item
@@ -79,6 +79,10 @@ app.post("/payment", async (req, res) => {
 });
 
 app.post("/callback", async (req, res) => {
+  const { insertMultipleOrders, insertOrder, insertUser } = await import(
+    "../../app/_lib/actions"
+  );
+
   let result = {};
 
   try {

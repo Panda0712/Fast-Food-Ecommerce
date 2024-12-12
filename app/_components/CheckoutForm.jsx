@@ -106,7 +106,7 @@ const CheckoutForm = () => {
       };
 
       const response = await fetch(
-        "https://fcd2-2402-800-63a8-dd41-403d-6000-2875-2071.ngrok-free.app/payment",
+        "https://d130-2402-800-63a8-dd41-403d-6000-2875-2071.ngrok-free.app/payment",
         {
           method: "POST",
           headers: {
