@@ -1,6 +1,5 @@
 import axios from "axios";
 import crypto from "crypto";
-import { insertOrder } from "../_lib/actions";
 
 const config = {
   app_id: "2553",
@@ -31,13 +30,6 @@ export default async function handler(req, res) {
         description: `Thanh toán đơn hàng #${transId}`,
         mac: mac,
         callback_url: "https://localhost:3000/success", // Replace with your callback URL
-      });
-
-      // Save order to the database
-      await insertOrder({
-        ...orderInfo,
-        zalopayTransactionId: transId,
-        status: "pending",
       });
 
       // Return ZaloPay order URL to client
