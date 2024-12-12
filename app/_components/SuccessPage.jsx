@@ -6,16 +6,23 @@ import { useShippingFormContext } from "../_context/ShippingFormContext";
 
 import toast from "react-hot-toast";
 import Button from "./Button";
+import { useCart } from "../_context/CartContext";
 
 const SuccessPage = () => {
   const [second, setSecond] = useState(15);
 
   const { formData, resetFormData } = useShippingFormContext();
 
+  const { cart, resetCart } = useCart();
+
   const router = useRouter();
 
   useEffect(() => {
     toast.success("Đơn hàng đã được đặt thành công");
+
+    if (cart.length > 0) {
+      resetCart();
+    }
 
     const countdown = setInterval(() => {
       setSecond((prevSeconds) => prevSeconds - 1);
@@ -30,7 +37,7 @@ const SuccessPage = () => {
       clearInterval(countdown);
       clearTimeout(timeout);
     };
-  }, [router, resetFormData, formData]);
+  }, [router, resetFormData, formData, cart, resetCart]);
 
   if (!formData.name) {
     router.push("/");
