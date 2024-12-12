@@ -8,16 +8,33 @@ import {
   getOrdersCount,
   getPaginationOrders,
   getSpecificFoods,
+  updateOrder,
 } from "../_lib/actions";
 import { HISTORY_PAGE_SIZE } from "../_lib/constants";
 import { formatVND, parseDateTime } from "../_lib/helper";
 import Button from "./Button";
+import Modal from "react-modal";
+import toast from "react-hot-toast";
+
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    height: "150px",
+  },
+};
 
 const OrderHistory = ({ guestData }) => {
   const [orders, setOrders] = useState([]);
   const [foodsData, setFoodsData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [totalOrders, setTotalOrders] = useState(0);
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [cancelItem, setCancelItem] = useState(null);
 
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -78,6 +95,36 @@ const OrderHistory = ({ guestData }) => {
     }
   };
 
+  const handleCancelOrder = async (id) => {
+    try {
+      const updateData = { ...cancelItem };
+      updateData.status = "canceled";
+
+      const { error } = await updateOrder(updateData, id);
+
+      if (error) {
+        toast.error(error);
+      }
+
+      toast.success("Đơn hàng đã được hủy thành công");
+      setIsOpenModal(false);
+      setCancelItem(null);
+
+      setOrders((prevOrders) =>
+        prevOrders.map((order) =>
+          order.id === id ? { ...order, status: "canceled" } : order
+        )
+      );
+    } catch (error) {
+      setIsOpenModal(false);
+      toast.error(error.message || "Đã xảy ra lỗi");
+    }
+  };
+
+  const afterOpenModal = () => {
+    // subtitle.style.color = "#f00";
+  };
+
   useEffect(() => {
     if (guestData?.id) {
       fetchPageData(currentPage);
@@ -133,7 +180,11 @@ const OrderHistory = ({ guestData }) => {
                       Mã đơn hàng: #{order.id}
                     </p>
                     <p className="text-sm sm:text-lg">
-                      {order.isPaid ? "☑️ Đã thanh toán" : "✖️ Chưa thanh toán"}
+                      {order.isPaid
+                        ? "☑️ Đã thanh toán"
+                        : order.status === "canceled"
+                        ? "❌ Đã hủy"
+                        : "✖️ Chưa thanh toán"}
                     </p>
                   </div>
                 </div>
@@ -152,6 +203,20 @@ const OrderHistory = ({ guestData }) => {
                   </span>
                 </div>
                 <div className="flex gap-3">
+                  {Date.now() - new Date(order.orderTime).getTime() <=
+                    15 * 60 * 1000 &&
+                    !order.isPaid &&
+                    order.status !== "canceled" && (
+                      <Button
+                        onClick={() => {
+                          setIsOpenModal(true);
+                          setCancelItem(order);
+                        }}
+                        className="uppercase px-2 sm:px-8 text-[12px] font-medium sm:font-semibold sm:text-base"
+                      >
+                        Hủy đơn hàng
+                      </Button>
+                    )}
                   <Button
                     onClick={() => router.push(`/foods/${order.foodId}`)}
                     type="order"
@@ -196,6 +261,33 @@ const OrderHistory = ({ guestData }) => {
           </Button>
         </div>
       )}
+
+      <Modal
+        isOpen={isOpenModal}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={() => setIsOpenModal(false)}
+        style={customStyles}
+        contentLabel="Confirm Modal"
+      >
+        <h2 className="text-xl">
+          Bạn có chắc muốn hủy đơn hàng không? Sau khi hủy không thể hoàn tác.
+        </h2>
+        <div className="flex items-center gap-4 absolute bottom-3 right-6">
+          <Button
+            onClick={() => setIsOpenModal(false)}
+            className="text-[18px] font-semibold px-4 py-3"
+          >
+            Thoát
+          </Button>
+          <Button
+            onClick={() => handleCancelOrder(cancelItem.id)}
+            type="order"
+            className="text-[18px] px-4 py-3"
+          >
+            Hủy
+          </Button>
+        </div>
+      </Modal>
     </div>
   );
 };

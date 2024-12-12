@@ -184,6 +184,21 @@ export const insertMultipleOrders = async (newData) => {
   return { orderMultipleInsert, error };
 };
 
+export const updateOrder = async (updateData, id) => {
+  const { data: updatedData, error } = await supabase
+    .from("orders")
+    .update(updateData)
+    .eq("id", id)
+    .select();
+
+  if (error) {
+    toast.error(error.message);
+    throw new Error("Lỗi cập nhật đơn hàng! Vui lòng thử lại sau!");
+  }
+
+  return { updatedData, error };
+};
+
 export const insertUser = async (newData) => {
   const { data: userData, error } = await supabase
     .from("guests")
