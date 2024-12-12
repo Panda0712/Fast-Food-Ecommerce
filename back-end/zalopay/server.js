@@ -26,8 +26,6 @@ const config = {
 app.post("/payment", async (req, res) => {
   const { amount, orderInfo } = req.body;
 
-  console.log(orderInfo);
-
   const embed_data = {
     redirecturl: "https://fast-food-ecommerce.vercel.app/success",
     amount,
@@ -46,8 +44,7 @@ app.post("/payment", async (req, res) => {
     amount: amount,
     description: `Lazada - Payment for the order #${transID}`,
     bank_code: "",
-    callback_url:
-      "https://d130-2402-800-63a8-dd41-403d-6000-2875-2071.ngrok-free.app/callback",
+    callback_url: "https://a27a-116-106-196-46.ngrok-free.app/callback",
   };
 
   // appid|app_trans_id|appuser|amount|apptime|embeddata|item
@@ -80,7 +77,7 @@ app.post("/payment", async (req, res) => {
 
 app.post("/callback", async (req, res) => {
   const { insertMultipleOrders, insertOrder, insertUser } = await import(
-    "../../app/_lib/actions"
+    "../../app/_lib/actions.js"
   );
 
   let result = {};
@@ -140,6 +137,8 @@ app.post("/callback", async (req, res) => {
         status: "paid",
         isPaid: true,
       }));
+
+      console.log(updateData);
 
       if (updateData.length > 1) {
         await insertMultipleOrders(updateData);

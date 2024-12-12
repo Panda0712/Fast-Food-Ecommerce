@@ -1,4 +1,4 @@
-import supabase from "./supabase";
+import supabase from "./supabase.js";
 import toast from "react-hot-toast";
 
 export const getFoods = async () => {
