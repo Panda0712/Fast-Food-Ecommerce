@@ -204,7 +204,7 @@ const OrderHistory = ({ guestData }) => {
                 </div>
                 <div className="flex gap-3">
                   {Date.now() - new Date(order.orderTime).getTime() <=
-                    15 * 60 * 1000 &&
+                    10 * 60 * 1000 &&
                     !order.isPaid &&
                     order.status !== "canceled" && (
                       <Button

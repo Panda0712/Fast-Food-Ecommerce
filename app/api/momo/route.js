@@ -14,6 +14,7 @@ export async function POST(request) {
   var requestId = `${partnerCode}_${Date.now()}`;
   var orderId = requestId;
   var orderInfo = "pay with MoMo";
+  var orderExpireTime = 30;
   var redirectUrl = "http://localhost:3000";
   var ipnUrl = "https://callback.url/notify";
   var requestType = "captureWallet";
@@ -34,6 +35,7 @@ export async function POST(request) {
     amount: amount,
     orderId: orderId,
     orderInfo: orderInfo,
+    orderExpireTime: orderExpireTime,
     redirectUrl: redirectUrl,
     ipnUrl: ipnUrl,
     extraData: extraData,
