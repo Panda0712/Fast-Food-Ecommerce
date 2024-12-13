@@ -69,25 +69,39 @@ const CheckoutForm = () => {
     }
 
     try {
-      const response = await fetch("/api/momo", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ amount: totalPrice }),
-      });
+      const orderDataForPayment = {
+        ...formData,
+        totalPrice: totalPrice,
+        status: "processing",
+        orderData,
+      };
+
+      const response = await fetch(
+        "https://2bf9-2402-800-63a8-dd41-550-3021-3cf6-a760.ngrok-free.app/payment",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            amount: totalPrice,
+            orderInfo: orderDataForPayment,
+          }),
+        }
+      );
 
       const data = await response.json();
 
-      if (data.payUrl) {
-        // Redirect the user to the MoMo payment URL
-        window.location.href = data.payUrl;
+      const { payUrl } = data;
+
+      if (payUrl) {
+        window.location.href = payUrl;
       } else {
-        toast.error("Không thể tạo đường dẫn thanh toán MoMo");
+        toast.error("Không thể tạo đường dẫn thanh toán");
       }
     } catch (error) {
-      console.error("MoMo Payment Error:", error);
-      toast.error("Thanh toán MoMo thất bại");
+      console.error("Momo Payment Error:", error);
+      toast.error("Thanh toán Momo thất bại");
     }
   };
 
@@ -144,7 +158,6 @@ const CheckoutForm = () => {
 
     if (payment === "momo") {
       await handleMomoPayment();
-      // document.getElementById("qrModal").style.display = "flex";
     } else if (payment === "cash") {
       handleInsertOrder(orderData);
       router.push("/success");
