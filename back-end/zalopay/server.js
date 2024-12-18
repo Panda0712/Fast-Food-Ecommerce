@@ -38,7 +38,8 @@ app.post("/payment", async (req, res) => {
     amount: amount,
     description: `Lazada - Payment for the order #${transID}`,
     bank_code: "",
-    callback_url: "https://a27a-116-106-196-46.ngrok-free.app/callback",
+    callback_url:
+      "https://4876-2402-800-63a8-dd41-550-3021-3cf6-a760.ngrok-free.app/callback",
   };
 
   const data =

@@ -18,7 +18,7 @@ app.post("/payment", async (req, res) => {
   var partnerCode = "MOMO";
   var redirectUrl = "https://fast-food-ecommerce.vercel.app/success";
   var ipnUrl =
-    "https://2bf9-2402-800-63a8-dd41-550-3021-3cf6-a760.ngrok-free.app/callback";
+    "https://1589-2402-800-63a8-dd41-550-3021-3cf6-a760.ngrok-free.app/callback";
   var requestType = "payWithMethod";
   var orderId = partnerCode + new Date().getTime();
   var requestId = orderId;

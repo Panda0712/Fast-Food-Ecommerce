@@ -77,7 +77,7 @@ const CheckoutForm = () => {
       };
 
       const response = await fetch(
-        "https://2bf9-2402-800-63a8-dd41-550-3021-3cf6-a760.ngrok-free.app/payment",
+        "https://fast-food-payment-server.vercel.app/momo/payment",
         {
           method: "POST",
           headers: {
@@ -120,7 +120,7 @@ const CheckoutForm = () => {
       };
 
       const response = await fetch(
-        "https://a27a-116-106-196-46.ngrok-free.app/payment",
+        "https://fast-food-payment-server.vercel.app/zalopay/payment",
         {
           method: "POST",
           headers: {
