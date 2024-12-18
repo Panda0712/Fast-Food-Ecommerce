@@ -258,7 +258,7 @@ const CheckoutForm = () => {
             onChange={() => handleChangePaymentMethod("bank")}
           />
           <label name="bank" htmlFor="bank">
-            Ví MB Bank
+            Quét mã QR thanh toán MB Bank
           </label>
         </div>
       </div>
