@@ -91,6 +91,7 @@ const HomeSlider = ({ foods }) => {
         setIsRating(true);
       }
     };
+    handleRecommend();
   }, [userEmail]);
 
   console.log(foodData);
