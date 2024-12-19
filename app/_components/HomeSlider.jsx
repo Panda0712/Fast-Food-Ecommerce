@@ -35,46 +35,62 @@ const HomeSlider = ({ foods }) => {
   };
 
   useEffect(() => {
-    if (userEmail) {
-      checkExistingUser(userEmail).then(async (data) => {
-        setGuestData(data);
-        console.log(data);
+    const handleRecommend = async () => {
+      if (userEmail) {
+        checkExistingUser(userEmail).then(async (data) => {
+          setGuestData(data);
+          console.log(data);
 
-        if (data?.id) {
-          const response = await fetch(
-            "https://fast-food-recommendation-system-server.onrender.com/api/user-content-based",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                guest_id: data.id.toString(),
-                top_n: 15,
-              }),
-            }
-          );
+          if (data?.id) {
+            const response = await fetch(
+              "https://fast-food-recommendation-system-server.onrender.com/api/user-content-based",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  guest_id: data.id.toString(),
+                  top_n: 15,
+                }),
+              }
+            );
 
-          const contentBasedData = await response.json();
-          setFoodData(contentBasedData);
-          setIsRating(false);
-        } else {
-          const response = await fetch(
-            "https://fast-food-recommendation-system-server.onrender.com/api/rating-based",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-          );
+            const contentBasedData = await response.json();
+            setFoodData(contentBasedData);
+            setIsRating(false);
+          } else {
+            const response = await fetch(
+              "https://fast-food-recommendation-system-server.onrender.com/api/rating-based",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              }
+            );
 
-          const ratingBasedData = await response.json();
-          setFoodData(ratingBasedData);
-          setIsRating(true);
-        }
-      });
-    }
+            const ratingBasedData = await response.json();
+            setFoodData(ratingBasedData);
+            setIsRating(true);
+          }
+        });
+      } else {
+        const response = await fetch(
+          "https://fast-food-recommendation-system-server.onrender.com/api/rating-based",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        const ratingBasedData = await response.json();
+        setFoodData(ratingBasedData);
+        setIsRating(true);
+      }
+    };
   }, [userEmail]);
 
   console.log(foodData);
