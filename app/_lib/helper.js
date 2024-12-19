@@ -27,3 +27,14 @@ export function parseDateTime(dateTimeString) {
     fullDateTime: `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milliseconds}`, // Trả về đầy đủ YYYY-MM-DDTHH:mm:ss.sss
   };
 }
+
+export function capitalizeFirstLetter(name) {
+  // Tách chuỗi thành mảng các từ, loại bỏ khoảng trắng dư thừa
+  const formattedName = name.split(", ").join(" ").trim();
+
+  // Viết hoa chữ cái đầu tiên
+  const capitalized =
+    formattedName.charAt(0).toUpperCase() + formattedName.slice(1);
+
+  return capitalized;
+}
