@@ -1,20 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import {
-  faBowlFood,
-  faMoneyBill,
-  faTag,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/navigation";
 
-import Carousel from "react-multi-carousel";
-import Button from "./Button";
 import { useUser } from "@clerk/nextjs";
-import { getSpecificUser } from "../_lib/actions";
 import { useEffect, useState } from "react";
+import Carousel from "react-multi-carousel";
+import { getSpecificUser } from "../_lib/actions";
 import { capitalizeFirstLetter } from "../_lib/helper";
+import Button from "./Button";
 
 const HomeSlider = ({ foods }) => {
   const [guestData, setGuestData] = useState();

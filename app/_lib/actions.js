@@ -32,7 +32,7 @@ export const getCategories = async () => {
   let { data: categories, error } = await supabase
     .from("category")
     .select("*")
-    .order("created_at", { ascending: false });
+    .order("created_at");
 
   if (error) {
     throw new Error("Lỗi tải dữ liệu các loại mặt hàng! Vui lòng thử lại sau!");
@@ -57,6 +57,20 @@ export const getRelatedFoods = async (category, id) => {
   }
 
   return { relatedFoods, error };
+};
+
+export const updateSpecificFood = async (updateData, foodId) => {
+  const { data: updatedData, error } = await supabase
+    .from("foods")
+    .update(updateData)
+    .eq("id", foodId)
+    .select();
+
+  if (error) {
+    throw new Error("Cập nhật món ăn thất bại! Vui lòng thử lại sau!");
+  }
+
+  return { updatedData, error };
 };
 
 export const insertContact = async (newData) => {

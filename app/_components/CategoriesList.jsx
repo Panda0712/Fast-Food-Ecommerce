@@ -19,6 +19,8 @@ const CategoriesList = () => {
     setCategoriesList(categories);
   };
 
+  console.log(categoriesList);
+
   return (
     <div className="py-16 bg-[url('/bg-top-main1.png')] bg-center bg-cover">
       <div className="flex items-center justify-center gap-4">

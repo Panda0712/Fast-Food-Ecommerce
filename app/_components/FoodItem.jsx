@@ -2,7 +2,7 @@
 
 import { useCart } from "../_context/CartContext";
 import { useRouter } from "next/navigation";
-import { formatVND } from "../_lib/helper";
+import { capitalizeFirstLetter, formatVND } from "../_lib/helper";
 
 import Image from "next/image";
 import Button from "./Button";
@@ -14,8 +14,8 @@ const FoodItem = ({ food }) => {
 
   const description =
     food.description.length > 35
-      ? food.description.slice(0, 35) + "..."
-      : food.description;
+      ? capitalizeFirstLetter(food.description.slice(0, 35) + "...")
+      : capitalizeFirstLetter(food.description);
 
   const handleClick = (id) => {
     router.push(`/foods/${id}`);
@@ -25,7 +25,7 @@ const FoodItem = ({ food }) => {
     e.stopPropagation();
     addToCart({
       id: food.id,
-      foodName: food.name,
+      foodName: capitalizeFirstLetter(food.name),
       regularPrice: food.regularPrice,
       discount: food.discount,
       totalPrice: food.regularPrice - food.discount,
@@ -55,8 +55,11 @@ const FoodItem = ({ food }) => {
           className="w-full iconHoverSm transition-all h-[120px] md:h-[150px] object-cover rounded-tr-lg rounded-tl-lg"
         />
       </div>
-      <div className="px-3 py-4">
-        <p className="text-md font-semibold">{food.name}</p>
+      <div className="px-3 py-4 relative">
+        <span className="absolute right-3 font-semibold">⭐ {food.rating}</span>
+        <p className="text-md font-semibold">
+          {capitalizeFirstLetter(food.name)}
+        </p>
         <span className="text-sm h-16 md:h-none">{description}</span>
       </div>
       <div className="px-3 py-3 flex md:flex-row flex-col md:gap-2 gap-4 items-center justify-between">
