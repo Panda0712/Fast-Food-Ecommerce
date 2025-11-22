@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Fast Food Ecommerce
 
-## Getting Started
+A Next.js based fast-food ecommerce — browse foods, add to cart, checkout with example payment integrations (Momo, ZaloPay). This repository contains the frontend app (Next.js, App Router).
 
-First, run the development server:
+## Overview
 
-```bash
+This project demonstrates a complete fast-food ordering flow: product browsing, search and categories, shopping cart, shipping/checkout, payment integration, and order history. It's built with Next.js (App Router) and Tailwind CSS.
+
+## Demo
+
+<img src="public/fast-food-demo-1.gif" width="840" alt="Demo GIF 1">
+<br>
+<img src="public/fast-food-demo-2.gif" width="840" alt="Demo GIF 2">
+<br>
+<img src="public/fast-food-demo-3.gif" width="840" alt="Demo GIF 3">
+<br>
+<img src="public/fast-food-demo-4.gif" width="840" alt="Demo GIF 4">
+
+## Key Features
+
+- Browse foods by categories and search.
+- List recommendation foods using rating-based, content-based and content-based with user data recommendation system written in Python
+- Cart & checkout with shipping details and order summary.
+- Example payment integrations: Momo and ZaloPay sample servers for testing redirect/callback flows.
+- Order history and success pages.
+- Authentication pages using Clerk.
+- Reusable UI components and utility functions.
+
+## Tech Stack
+
+- Next.js 14 (App Router)
+- React 18
+- Tailwind CSS
+- Axios for HTTP requests
+- Supabase
+
+## Environment Variables
+
+Create a `.env.local` file in the project root and add the keys your local setup requires. Common variables used by the project (add or remove as needed):
+
+- `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` - Public key of Clerk
+- `CLERK_SECRET_KEY` - Secret key of Clerk
+- `NEXT_PUBLIC_CLERK_SIGN_IN_URL` - Sign in url
+- `NEXT_PUBLIC_CLERK_SIGN_UP_URL` - Sign up url
+- `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_KEY` — Supabase integration
+- `ZALOPAY_SANDBOX_APP_ID` - Sandbox app id
+- `ZALOPAY_SANDBOX_KEY1` - Key1 for zalopay sandbox
+- `ZALOPAY_SANDBOX_KEY2` - Key2 for zalopay sandbox
+- `ZALOPAY_CALLBACK_URL` - Callback payment url for zalopay
+
+Keep secrets out of version control.
+
+## Local Development
+
+Install dependencies and run the Next.js dev server from the project root:
+
+```powershell
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000` in your browser to view the app.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Build & Production Preview
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Build and start the production server:
 
-## Learn More
+```powershell
+npm run build
+npm run start
+```
 
-To learn more about Next.js, take a look at the following resources:
+Or use `npm run preview` if present in your environment for a production preview.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Troubleshooting
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Ensure you are running Node 18+ (recommended for Next.js 14).
+- If pages fail to load, check `.env.local` and required keys.
 
-## Deploy on Vercel
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Fork the repo and open a PR with your changes.
+- Keep components modular in `app/_components/` and keep environment-sensitive values in `.env` files.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## License
+
+Add a `LICENSE` file to declare a license (MIT recommended if you want permissive usage).
