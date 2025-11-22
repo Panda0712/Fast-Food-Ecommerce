@@ -8,7 +8,7 @@ This project demonstrates a complete fast-food ordering flow: product browsing, 
 
 ## Demo
 
-<img src="public/fast-food-demo-1.gif" width="840" alt="Demo GIF 1">
+<img src="public/fast-food-demo-first.gif" width="840" alt="Demo GIF 1">
 <br>
 <img src="public/fast-food-demo-2.gif" width="840" alt="Demo GIF 2">
 <br>
