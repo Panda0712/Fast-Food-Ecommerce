@@ -1,4 +1,4 @@
-# Fast Food Ecommerce
+# Fast Food Ecommerce 🍔🍟🍕
 
 A Next.js based fast-food ecommerce — browse foods, add to cart, checkout with example payment integrations (Momo, ZaloPay). This repository contains the frontend app (Next.js, App Router).
 
