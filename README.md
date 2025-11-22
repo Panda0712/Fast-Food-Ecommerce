@@ -18,13 +18,13 @@ This project demonstrates a complete fast-food ordering flow: product browsing, 
 
 ## Key Features
 
-- Browse foods by categories and search.
-- List recommendation foods using rating-based, content-based and content-based with user data recommendation system written in Python
-- Cart & checkout with shipping details and order summary.
-- Example payment integrations: Momo and ZaloPay sample servers for testing redirect/callback flows.
-- Order history and success pages.
-- Authentication pages using Clerk.
-- Reusable UI components and utility functions.
+- **Browse foods** by categories and search.
+- **List recommendation foods** using **rating-based**, **content-based** and content-based with user data **recommendation system** written in Python
+- **Cart & checkout** with shipping details and order summary.
+- **Example payment integrations:** Momo and ZaloPay sample servers for testing redirect/callback flows.
+- **Order** history and success pages.
+- **Authentication** pages using Clerk.
+- **Reusable UI components** and utility functions.
 
 ## Tech Stack
 
