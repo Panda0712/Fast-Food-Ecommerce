@@ -21,7 +21,10 @@ export async function POST(request) {
   var extraData = "";
 
   // Tạo chữ ký HMAC SHA256
-  var rawSignature = `accessKey=${accessKey}&amount=${amount}&extraData=${extraData}&ipnUrl=${ipnUrl}&orderId=${orderId}&orderInfo=${orderInfo}&partnerCode=${partnerCode}&redirectUrl=${redirectUrl}&requestId=${requestId}&requestType=${requestType}`;
+  var rawSignature = `accessKey=${accessKey}&amount=${amount}
+  &extraData=${extraData}&ipnUrl=${ipnUrl}&orderId=${orderId}
+  &orderInfo=${orderInfo}&partnerCode=${partnerCode}&redirectUrl=
+  ${redirectUrl}&requestId=${requestId}&requestType=${requestType}`;
   var signature = crypto
     .createHmac("sha256", secretKey)
     .update(rawSignature)
