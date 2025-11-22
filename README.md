@@ -19,7 +19,7 @@ This project demonstrates a complete fast-food ordering flow: product browsing, 
 ## Key Features
 
 - **Browse foods** by categories and search.
-- **List recommendation foods** using **rating-based**, **content-based** and content-based with user data **recommendation system** written in Python
+- **List recommendation foods** using rating-based, content-based and content-based with user data **recommendation system** written in Python
 - **Cart & checkout** with shipping details and order summary.
 - **Example payment integrations:** Momo and ZaloPay sample servers for testing redirect/callback flows.
 - **Order** history and success pages.
@@ -27,6 +27,8 @@ This project demonstrates a complete fast-food ordering flow: product browsing, 
 - **Reusable UI components** and utility functions.
 
 ## Tech Stack
+
+![Next.js](https://img.shields.io/badge/Next.js-14-black?logo=next.js)&nbsp;![React](https://img.shields.io/badge/React-18-blue?logo=react)&nbsp;![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.x-skyblue?logo=tailwindcss)&nbsp;![Axios](https://img.shields.io/badge/Axios-1.x-0052CC?logo=axios)&nbsp;![Supabase](https://img.shields.io/badge/Supabase-2.x-3ECF8E?logo=supabase)
 
 - Next.js 14 (App Router)
 - React 18
